@@ -1,7 +1,7 @@
 import PaymentType from '../infra/typeorm/entities/PaymentType';
 import ICreatePaymentTypeDTO from '../dtos/ICreatePaymentTypeDTO';
 
-export default interface IPaymentTypeRepository {
+export default interface IPaymentTypesRepository {
   create(data: ICreatePaymentTypeDTO): Promise<PaymentType>;
   findById(id: number): Promise<PaymentType | undefined>;
   findByName(name: string): Promise<PaymentType | undefined>;

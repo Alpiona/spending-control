@@ -1,9 +1,9 @@
 import ICreatePaymentTypeDTO from '@modules/payment_types/dtos/ICreatePaymentTypeDTO';
-import IPaymentTypeRepository from '../IPaymentTypeRepository';
+import IPaymentTypesRepository from '../IPaymentTypesRepository';
 
 import PaymentType from '../../infra/typeorm/entities/PaymentType';
 
-class FakePaymentTypeRepository implements IPaymentTypeRepository {
+class FakePaymentTypeRepository implements IPaymentTypesRepository {
   private paymentTypes: PaymentType[] = [];
 
   public async create(data: ICreatePaymentTypeDTO): Promise<PaymentType> {

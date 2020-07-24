@@ -1,10 +1,10 @@
 import { Repository, getRepository } from 'typeorm';
 
-import IPaymentTypeRepository from '@modules/payment_types/repositories/IPaymentTypeRepository';
+import IPaymentTypesRepository from '@modules/payment_types/repositories/IPaymentTypesRepository';
 import ICreatePaymentTypeDTO from '@modules/payment_types/dtos/ICreatePaymentTypeDTO';
 import PaymentType from '../entities/PaymentType';
 
-class PaymentTypeRepository implements IPaymentTypeRepository {
+class PaymentTypesRepository implements IPaymentTypesRepository {
   private ormRepository: Repository<PaymentType>;
 
   constructor() {
@@ -19,11 +19,21 @@ class PaymentTypeRepository implements IPaymentTypeRepository {
     return paymentType;
   }
 
+  public async findById(id: number): Promise<PaymentType | undefined> {
+    const paymentType = await this.ormRepository.findOne(id);
+
+    return paymentType;
+  }
+
   public async findByName(name: string): Promise<PaymentType | undefined> {
     const paymentType = await this.ormRepository.findOne({ name });
 
     return paymentType;
   }
+
+  public async save(paymentType: PaymentType): Promise<PaymentType> {
+    return this.ormRepository.save(paymentType);
+  }
 }
 
-export default PaymentTypeRepository;
+export default PaymentTypesRepository;

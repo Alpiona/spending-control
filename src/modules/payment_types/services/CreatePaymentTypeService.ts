@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import PaymentType from '../infra/typeorm/entities/PaymentType';
-import IPaymentTypeRepository from '../repositories/IPaymentTypeRepository';
+import IPaymentTypesRepository from '../repositories/IPaymentTypesRepository';
 
 interface IRequest {
   name: string;
@@ -12,18 +12,15 @@ interface IRequest {
 class CreatePaymentTypeService {
   constructor(
     @inject('PaymentTypeRepository')
-    private paymentTypeRepository: IPaymentTypeRepository,
+    private paymentTypeRepository: IPaymentTypesRepository,
   ) {}
 
-  public async execute({ name, description }: IRequest): Promise<PaymentType> {
-    let paymentType = await this.paymentTypeRepository.findByName(name);
+  public async execute(data: IRequest): Promise<PaymentType> {
+    let paymentType = await this.paymentTypeRepository.findByName(data.name);
 
     if (paymentType) throw new AppError('Name already used');
 
-    paymentType = await this.paymentTypeRepository.create({
-      name,
-      description,
-    });
+    paymentType = await this.paymentTypeRepository.create(data);
 
     return paymentType;
   }
