@@ -14,7 +14,7 @@ describe('CreateBill', () => {
     createBillService = new CreateBillService(fakeBillsRepository);
   });
 
-  it('should be able to create new bill', async () => {
+  it('should be able to create new bill with all the possible data', async () => {
     const bill = await createBillService.execute({
       name: 'Bill Name Example',
       description: 'Bill Description Example',
@@ -25,7 +25,7 @@ describe('CreateBill', () => {
     expect(bill).toHaveProperty('id');
   });
 
-  it('should be able to create new bill with only necessary data', async () => {
+  it('should be able to create new bill using only the necessary data', async () => {
     const bill = await createBillService.execute({
       name: 'Bill Name Example',
       due_at: new Date(),

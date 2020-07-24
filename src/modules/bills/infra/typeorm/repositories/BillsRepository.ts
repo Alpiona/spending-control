@@ -24,6 +24,16 @@ class BillsRepository implements IBillsRepository {
 
     return bill;
   }
+
+  public async findById(id: number): Promise<Bill | undefined> {
+    const paymentType = await this.ormRepository.findOne(id);
+
+    return paymentType;
+  }
+
+  public async save(bill: Bill): Promise<Bill> {
+    return this.ormRepository.save(bill);
+  }
 }
 
 export default BillsRepository;
