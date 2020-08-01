@@ -11,16 +11,16 @@ interface IRequest {
 @injectable()
 class CreatePaymentTypeService {
   constructor(
-    @inject('PaymentTypeRepository')
-    private paymentTypeRepository: IPaymentTypesRepository,
+    @inject('PaymentTypesRepository')
+    private paymentTypesRepository: IPaymentTypesRepository,
   ) {}
 
   public async execute(data: IRequest): Promise<PaymentType> {
-    let paymentType = await this.paymentTypeRepository.findByName(data.name);
+    let paymentType = await this.paymentTypesRepository.findByName(data.name);
 
     if (paymentType) throw new AppError('Name already used');
 
-    paymentType = await this.paymentTypeRepository.create(data);
+    paymentType = await this.paymentTypesRepository.create(data);
 
     return paymentType;
   }

@@ -32,11 +32,6 @@ export default class CreatePaymentTypes1595266839899
             isNullable: true,
           },
           {
-            name: 'due_at',
-            type: 'date',
-            isNullable: false,
-          },
-          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',

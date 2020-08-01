@@ -28,11 +28,11 @@ export default class CreateBills1595266579314 implements MigrationInterface {
             type: 'decimal',
             scale: 2,
             precision: 10,
-            isNullable: false,
+            isNullable: true,
           },
           {
             name: 'due_at',
-            type: 'date',
+            type: 'int',
             isNullable: false,
           },
           {

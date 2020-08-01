@@ -21,7 +21,7 @@ class Bill {
   projected_cost: number;
 
   @Column()
-  due_at: Date;
+  due_at: number;
 
   @CreateDateColumn()
   created_at: Date;

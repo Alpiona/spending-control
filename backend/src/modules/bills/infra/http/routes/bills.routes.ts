@@ -31,3 +31,5 @@ billsRouter.put(
   }),
   billsController.update,
 );
+
+export default billsRouter;

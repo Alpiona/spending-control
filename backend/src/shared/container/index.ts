@@ -15,7 +15,7 @@ container.registerSingleton<IBillsRepository>(
 );
 
 container.registerSingleton<IPaymentsRepository>(
-  'PaymentRepository',
+  'PaymentsRepository',
   PaymentsRepository,
 );
 
